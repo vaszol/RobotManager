@@ -10,6 +10,12 @@ public class Robot {
     // Текущий курс (в градусах)
     private double course = 0;
 
+    // Вот наш конструктор, который пока не очень полезен
+    public Robot(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     // Передвижение на дистанцию distance
     public void forward(int distance) {
         // Обращение к полю объекта X
