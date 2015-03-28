@@ -1,3 +1,5 @@
+package ru.vaszol.Robot;
+
 /**
  * Created by vas on 27.03.2015.
  */

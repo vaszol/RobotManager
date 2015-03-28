@@ -1,9 +1,11 @@
+package ru.vaszol.Robot;
+
 /**
  * Created by vas on 27.03.2015.
  */
 public class RobotManager {
     public static void main(String[] args) {
-        // Создаем объекта класса RobotExt - X, Y, course
+        // Создаем объекта класса ru.vaszol.Robot.RobotExt - X, Y, course
         RobotExt robot = new RobotExt(0, 0, 0);
 
         // Вперед на 20 метров
@@ -23,7 +25,7 @@ public class RobotManager {
         robot.forward(20);
         // Напечатать координаты
         robot.printCoordinates();
-        // И назад на 10 метров - это метод для RobotExt
+        // И назад на 10 метров - это метод для ru.vaszol.Robot.RobotExt
         robot.back(10);
         // Напечатать координаты
         robot.printCoordinates();
