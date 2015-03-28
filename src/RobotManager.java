@@ -3,27 +3,25 @@
  */
 public class RobotManager {
     public static void main(String[] args) {
+        // Создаем объект для управления роботом
+        RobotManager rm = new RobotManager();
+
         // Создаем объекта класса Robot
         Robot robot = new Robot();
-
-        // Вперед на 20 метров
-        robot.forward(20);
-        // Напечатать координаты
-        robot.printCoordinates();
-
-        // Курс 90 градусов - не самый правильный способ
-        // но давайте пока остановимся на нем
-        robot.course = 90;
-        // Вперед на 20 метров
-        robot.forward(20);
-        // Напечатать координаты
-        robot.printCoordinates();
-
         // Курс 45 градусов
-        robot.course = 45;
-        // Вперед на 20 метров
-        robot.forward(20);
-        // Напечатать координаты
-        robot.printCoordinates();
+        robot.setCourse(45);
+        // Напечатать курс
+        System.out.println(robot.getCourse());      // Здесь будет 45
+
+        // вызываем метод и передаем туда робота
+        rm.changeCourse(robot);
+
+        // Напечатать курс
+        System.out.println(robot.getCourse());      // Здесь будет 180
+    }
+
+    private void changeCourse(Robot robot) {
+        robot = new Robot(); //Локальная ссылка теперь будет указывать на новый объект и все действия будут производиться над новым объектом. А старый робот не будет меняться.
+        robot.setCourse(180);
     }
 }
