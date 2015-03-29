@@ -1,33 +1,29 @@
 package ru.vaszol.Robot;
 
+import ru.vaszol.Robot.ui.RobotFrame;
+
+import javax.swing.JFrame;
+
 /**
  * Created by vas on 27.03.2015.
  */
 public class RobotManager {
     public static void main(String[] args) {
-        // Создаем объекта класса ru.vaszol.Robot.RobotExt - X, Y, course
-        RobotExt robot = new RobotExt(0, 0, 0);
+        // Количество сторон многоугольника
+        final int COUNT = 12;
+        // Длина стороны
+        final int SIDE = 100;
 
-        // Вперед на 20 метров
-        robot.forward(20);
-        // Напечатать координаты
-        robot.printCoordinates();
+        Robot robot = new Robot(200, 50);
+        // Создаем замкнутую фигуру с количеством углов COUNT
+        for (int i = 0; i < COUNT; i++) {
+            robot.forward(SIDE);
+            robot.setCourse(robot.getCourse() + 360 / COUNT);
+        }
 
-        robot.setCourse(90);
-        // Вперед на 20 метров
-        robot.forward(20);
-        // Напечатать координаты
-        robot.printCoordinates();
-
-        // Курс 45 градусов
-        robot.setCourse(45);
-        // Вперед на 20 метров
-        robot.forward(20);
-        // Напечатать координаты
-        robot.printCoordinates();
-        // И назад на 10 метров - это метод для ru.vaszol.Robot.RobotExt
-        robot.back(10);
-        // Напечатать координаты
-        robot.printCoordinates();
+        // Создаем форму для отрисовки пути нашего робота
+        RobotFrame rf = new RobotFrame(robot);
+        rf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        rf.setVisible(true);
     }
 }

@@ -1,34 +1,32 @@
 package ru.vaszol.Robot;
 
-/**
- * Created by vas on 27.03.2015.
- */
-public class Robot {
+import java.util.ArrayList;
+import java.util.List;
 
-    // Текущая координата X
+public class Robot
+{
     private double x = 0;
-    // Текущая координата Y
     private double y = 0;
-    // Текущий курс (в градусах)
     protected double course = 0;
+    // Список для хранения линий, по которым перемещался робот
+    // Пока будем использовать его без подробностей
+    private ArrayList<RobotLine> lines = new ArrayList<RobotLine>();
 
-    // Вот наш конструктор, который пока не очень полезен
     public Robot(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    // Передвижение на дистанцию distance
     public void forward(int distance) {
-        // Обращение к полю объекта X
-        x = x + distance * Math.cos(course / 180 * Math.PI);
-        // Обращение к полю объекта Y
-        y = y + distance * Math.sin(course / 180 * Math.PI);
-    }
-
-    // Печать координат робота
-    public void printCoordinates() {
-        System.out.println(x + "," + y);
+        // Запоминаем координаты робота перед перемещением
+        final double xOld = x;
+        final double yOld = y;
+        // Меняем координаты
+        x += distance * Math.cos(course / 180 * Math.PI);
+        y += distance * Math.sin(course / 180 * Math.PI);
+        // Запоминаем координаты пройденного пути в списке
+        // Класс List позволяет добавить объект и хранить его
+        lines.add(new RobotLine(xOld, yOld, x, y));
     }
 
     public double getX() {
@@ -43,8 +41,11 @@ public class Robot {
         return course;
     }
 
-    // Мы ррассмотрим этот метод несколько позже
     public void setCourse(double course) {
         this.course = course;
+    }
+
+    public ArrayList<RobotLine> getLines() {
+        return lines;
     }
 }
